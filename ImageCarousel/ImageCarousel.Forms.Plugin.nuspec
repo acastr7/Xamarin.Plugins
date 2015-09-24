@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xamd.Plugins.Forms.ImageCarousel</id>
-       <version>1.0.0-beta</version>
+       <version>1.0.0</version>
        <title>Image Carousel Control Plugin for Xamarin.Forms</title>
        <authors>Andres Castro</authors>
        <owners>Andres Castro</owners>
@@ -22,54 +22,54 @@
    </metadata>
    <files>
       <!--Core-->
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" target="lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/release/Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/release/Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/release/Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" target="lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" />
 
      <!--Win Phone Silverlight
      <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsPhone\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsPhone.dll" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.WindowsPhone.dll" />
      <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsPhone\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsPhone.xml" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.WindowsPhone.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsPhone\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsPhone.pdb" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.WindowsPhone.pdb" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsPhone\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsPhone.dll.mdb" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.WindowsPhone.dll.mdb" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" target="lib\wp8\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" />
 -->
      <!--Win Phone RT
      <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT.dll" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT.dll" />
      <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT.xml" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT.pdb" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT.pdb" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT.dll.mdb" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.WindowsPhoneRT.dll.mdb" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" target="lib\wpa81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" />
 -->
      <!--Win Store
      <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsStore\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsStore.dll" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.WindowsStore.dll" />
      <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsStore\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsStore.xml" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.WindowsStore.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsStore\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsStore.pdb" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.WindowsStore.pdb" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.WindowsStore\bin\Release\Xamd.ImageCarousel.Forms.Plugin.WindowsStore.dll.mdb" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.WindowsStore.dll.mdb" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" target="lib\win81\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" />
       -->
 
      <!--Xamarin.Android-->
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Android\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Android.dll" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Android.dll" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Android\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Android.xml" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Android.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Android\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Android.pdb" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Android.pdb" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.pdb" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Droid/bin/release/Xamd.ImageCarousel.Forms.Plugin.Droid.dll" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Droid.dll" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Droid/bin/release/Xamd.ImageCarousel.Forms.Plugin.Droid.xml" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Droid.xml" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Droid/bin/release/Xamd.ImageCarousel.Forms.Plugin.Droid.dll.mdb" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Droid.dll.mdb" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/release/Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/release/Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/release/Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" target="lib\MonoAndroid10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll.mdb" />
 
      <!--Xamarin.iOS-->
-     <file src="Xamd.ImageCarousel.Forms.Plugin.iOS\bin\iPhone\Release\Xamd.ImageCarousel.Forms.Plugin.iOS.dll" target="lib\MonoTouch10\Xamd.ImageCarousel.Forms.Plugin.iOS.dll" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.iOS\bin\iPhone\Release\Xamd.ImageCarousel.Forms.Plugin.iOS.xml" target="lib\MonoTouch10\Xamd.ImageCarousel.Forms.Plugin.iOS.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\MonoTouch10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\MonoTouch10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.iOS/bin/release/Xamd.ImageCarousel.Forms.Plugin.iOS.dll" target="lib\MonoTouch10\Xamd.ImageCarousel.Forms.Plugin.iOS.dll" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.iOS/bin/release/Xamd.ImageCarousel.Forms.Plugin.iOS.xml" target="lib\MonoTouch10\Xamd.ImageCarousel.Forms.Plugin.iOS.xml" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/release/Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\MonoTouch10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/release/Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\MonoTouch10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
 
      <!--Xamarin.iOSUnified
      <file src="Xamd.ImageCarousel.Forms.Plugin.iOSUnified\bin\iPhone\Release\Xamd.ImageCarousel.Forms.Plugin.iOS.dll" target="lib\Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.iOS.dll" />
      <file src="Xamd.ImageCarousel.Forms.Plugin.iOSUnified\bin\iPhone\Release\Xamd.ImageCarousel.Forms.Plugin.iOS.xml" target="lib\Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.iOS.xml" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
-     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions\bin\Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" target="lib\Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.dll" />
+     <file src="Xamd.ImageCarousel.Forms.Plugin.Abstractions/bin/Release\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" target="lib\Xamarin.iOS10\Xamd.ImageCarousel.Forms.Plugin.Abstractions.xml" />
       -->
    </files>
 </package>
