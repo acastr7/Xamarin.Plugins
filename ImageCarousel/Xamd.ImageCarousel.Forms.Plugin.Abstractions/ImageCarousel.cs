@@ -70,7 +70,8 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 
 			foreach (var image in ImageList) {
 				image.Layout (new Rectangle (point, image.Bounds.Size));
-				point = new Point (point.X + image.Width, 0);
+				point = new Point (point.X + image.Width + this.Bounds.Width, 0);
+
 			}
 		}
 
@@ -114,7 +115,7 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 
 			var current = CurrentImage;
 
-			current.LayoutTo (new Rectangle (-CurrentImage.Width, 0, CurrentImage.Width, CurrentImage.Height));
+			current.LayoutTo (new Rectangle (-(this.Bounds.Width + this.Width + CurrentImage.Width), 0, CurrentImage.Width, CurrentImage.Height));
 			CurrentImage = nextImage;
 			nextImage.LayoutTo (new Rectangle (0, 0, CurrentImage.Width, CurrentImage.Height));
 		}
@@ -130,7 +131,7 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 
 			var current = CurrentImage;
 
-			current.LayoutTo (new Rectangle (CurrentImage.Width, 0, CurrentImage.Width, CurrentImage.Height));
+			current.LayoutTo (new Rectangle ((this.Bounds.Width + this.Width + CurrentImage.Width), 0, CurrentImage.Width, CurrentImage.Height));
 			CurrentImage = nextImage;
 			nextImage.LayoutTo (new Rectangle (0, 0, CurrentImage.Width, CurrentImage.Height));
 		}
