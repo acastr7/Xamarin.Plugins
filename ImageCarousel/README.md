@@ -52,6 +52,7 @@ You are able to set the ```Images``` as a bindable collection.
 
 #### Contributors
 * [Andres Castro](https://github.com/acastr7)
+* [Nate Rickard](https://github.com/NateRickard)
 
 Thanks!
 
