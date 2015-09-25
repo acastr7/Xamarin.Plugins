@@ -12,53 +12,42 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 	public class ImageCarousel : AbsoluteLayout
 	{
 		//The Bindable Images property, if MVVM/binding context is desired
-		public static readonly BindableProperty ImagesProperty = BindableProperty.Create<ImageCarousel, ObservableCollection<FileImageSource>> (p => p.Images, default(ObservableCollection<FileImageSource>));
+		public static readonly BindableProperty ImagesProperty = BindableProperty.Create<ImageCarousel, ObservableCollection<Image>> (p => p.Images, default(ObservableCollection<Image>));
 
-		public ObservableCollection<FileImageSource> Images {
-			get { return (ObservableCollection<FileImageSource>)GetValue (ImagesProperty); }
+		public ObservableCollection<Image> Images {
+			get { return (ObservableCollection<Image>)GetValue (ImagesProperty); }
 			set { SetValue (ImagesProperty, value); }
-		}
-
-		//Our interal list - we'll maintain this when the above Images collection is modified and use this to do indexing, etc. that can't be done on an IEnumerable
-		ObservableCollection<Image> images;
-
-		ObservableCollection<Image> ImageList {
-			get {
-				if (images == null) {
-					images = new ObservableCollection<Image> ();
-				}
-
-				return images;
-			}
 		}
 
 		public Image CurrentImage { get; private set; }
 
 		public ImageCarousel ()
 		{
+			Images = new ObservableCollection<Image> ();
 		}
 
-		public ImageCarousel (IEnumerable<FileImageSource> images)
+		void Images_CollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
 		{
-			//setting this triggers OnPropertyChanged below
-			Images = new ObservableCollection<FileImageSource> (images);
+			foreach (var item in e.NewItems) {
+				var image = item as Image;
+				if (image != null) {
+					addImageAsChild (image);
+				}
+			}
 		}
 
 		void addImagesAsChildren ()
 		{
-			Children.Clear ();
-
-			//take the current list of Images and add them as children... this will in turn populate ImageList via OnChildAdded below
-			var point = Point.Zero;
-
-			foreach (var imageSource in Images) {
-				var image = new Image {
-					Source = imageSource
-				};
-
-				this.Children.Add (image, new Rectangle (point, new Size (1, 1)), AbsoluteLayoutFlags.SizeProportional);
-				point = new Point (point.X + image.Width, 0);
+			foreach (var image in Images) {
+				addImageAsChild (image);
 			}
+		}
+
+		void addImageAsChild (Image image)
+		{
+			var point = Point.Zero;
+			this.Children.Add (image, new Rectangle (point, new Size (1, 1)), AbsoluteLayoutFlags.SizeProportional);
+			point = new Point (point.X + image.Width, 0);
 		}
 
 		protected override void LayoutChildren (double x, double y, double width, double height)
@@ -68,7 +57,7 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 			//fix layout issues caused by base behavior, make sure these things are in the right place before swiping begins
 			var point = Point.Zero;
 
-			foreach (var image in ImageList) {
+			foreach (var image in Images) {
 				image.Layout (new Rectangle (point, image.Bounds.Size));
 				point = new Point (point.X + image.Width + this.Bounds.Width, 0);
 
@@ -80,11 +69,8 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 			base.OnPropertyChanged (propertyName);
 
 			//if the Images property has changed, clear our ImageList of images and add all the new images as children
-			if (propertyName == ImagesProperty.PropertyName) {
-				Debug.WriteLine (propertyName);
-				ImageList.Clear ();
-				CurrentImage = null;
-
+			if (propertyName == ImagesProperty.PropertyName && Images != null) {
+				Images.CollectionChanged += Images_CollectionChanged;
 				addImagesAsChildren ();
 			}
 		}
@@ -95,8 +81,6 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 
 			//each time a child Image is added, add it to the ImageList
 			if (child is Image) {
-				ImageList.Add ((Image)child);
-
 				//set a CurrentImage if we don't already have one
 				if (CurrentImage == null) {
 					CurrentImage = (Image)child;
@@ -106,9 +90,9 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 
 		public void OnSwipeLeft ()
 		{
-			var imageNumber = ImageList.IndexOf (CurrentImage);
-			var nextNumber = imageNumber == ImageList.Count - 1 ? 0 : imageNumber + 1;
-			var nextImage = ImageList [nextNumber];
+			var imageNumber = Images.IndexOf (CurrentImage);
+			var nextNumber = imageNumber == Images.Count - 1 ? 0 : imageNumber + 1;
+			var nextImage = Images [nextNumber];
 
 			//make sure this image is in position to be animated in
 			nextImage.Layout (new Rectangle (new Point (CurrentImage.Width, 0), CurrentImage.Bounds.Size));
@@ -122,9 +106,9 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 
 		public void OnSwipeRight ()
 		{
-			var imageNumber = ImageList.IndexOf (CurrentImage);
-			var nextNumber = imageNumber == 0 ? ImageList.Count - 1 : imageNumber - 1;
-			var nextImage = ImageList [nextNumber];
+			var imageNumber = Images.IndexOf (CurrentImage);
+			var nextNumber = imageNumber == 0 ? Images.Count - 1 : imageNumber - 1;
+			var nextImage = Images [nextNumber];
 
 			//make sure this image is in position to be animated in
 			nextImage.Layout (new Rectangle (new Point (-CurrentImage.Width, 0), CurrentImage.Bounds.Size));
@@ -135,6 +119,8 @@ namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 			CurrentImage = nextImage;
 			nextImage.LayoutTo (new Rectangle (0, 0, CurrentImage.Width, CurrentImage.Height));
 		}
+			
+
 	}
 }
 
