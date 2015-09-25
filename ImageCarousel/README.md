@@ -21,14 +21,11 @@ Create a collection of FileImageSources.
 In your ImageCarousel constructor pass in the the collection.
 ```
 var images = new [] {
-  new FileImageSource { File = "mickey.png" },
-  new FileImageSource { File = "goofy.gif" },
-  new FileImageSource { File = "pluto.jpg" }
+  new Image { Source = "mickey.png" },
+  new Image { Source = "goofy.gif" },
+  new Image { Source = "pluto.jpg" }
 };
-new ImageCarousel (images) {
-  HorizontalOptions = LayoutOptions.FillAndExpand,
-  VerticalOptions = LayoutOptions.FillAndExpand
-}
+new ImageCarousel { Images = images };
 ```
 
 **XAML:**
@@ -41,7 +38,7 @@ xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assem
 Then add the xaml:
 
 ```xml
-<controls:ImageCarousel Images="{Binding Images}" HorizontalOptions="Center" />
+<controls:ImageCarousel Images="{Binding Images}" />
 ```
 
 
