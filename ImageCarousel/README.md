@@ -9,7 +9,7 @@ Simple but elegant way of display circle images in your Xamarin.Forms projects
 In your iOS, Android, and Windows Phone projects call:
 
 ```
-Xamarin.Forms.Init();//platform specific init
+Xamarin.Forms.Init(); //platform specific init
 ImageCarouselRenderer.Init();
 ```
 
