@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions"			 
+			 x:Class="TestImageCarousel.MainPage">
+	<ContentPage.Content>
+	<StackLayout Padding="2,20,2,0">
+		<Label Text="This is my home made carousel" TextColor="Blue" HorizontalOptions="Center"/>
+		<controls:ImageCarousel x:Name="MyCarousel" HeightRequest="250"/>
+		<Button x:Name="btn" Text="Load Images" Clicked="LoadImagesClicked" HorizontalOptions="Center" VerticalOptions="End"/>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
