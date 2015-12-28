@@ -6,7 +6,9 @@
 	<ContentPage.Content>
 	<StackLayout Padding="2,20,2,0">
 		<Label Text="This is my home made carousel" TextColor="Blue" HorizontalOptions="Center"/>
-		<controls:ImageCarousel x:Name="MyCarousel" HeightRequest="250"/>
+		<ContentView Padding="5">
+			<controls:ImageCarousel x:Name="MyCarousel" WidthRequest="250"/>		
+		</ContentView>
 		<Button x:Name="btn" Text="Load Images" Clicked="LoadImagesClicked" HorizontalOptions="Center" VerticalOptions="End"/>
 	</StackLayout>
 	</ContentPage.Content>
