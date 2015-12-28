@@ -6,121 +6,137 @@ using System.Text;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Xamd.ImageCarousel.Forms.Plugin.Abstractions
 {
 	public class ImageCarousel : AbsoluteLayout
 	{
-		//The Bindable Images property, if MVVM/binding context is desired
-		public static readonly BindableProperty ImagesProperty = BindableProperty.Create<ImageCarousel, ObservableCollection<Image>> (p => p.Images, default(ObservableCollection<Image>));
+		public static readonly BindableProperty ImageUrlsProperty = BindableProperty.Create<ImageCarousel, ObservableCollection<string>> (p => p.ImageUrls, default(ObservableCollection<string>));
 
-		public ObservableCollection<Image> Images {
-			get { return (ObservableCollection<Image>)GetValue (ImagesProperty); }
-			set { SetValue (ImagesProperty, value); }
+		public ObservableCollection<string> ImageUrls {
+			get { return (ObservableCollection<string>)GetValue (ImageUrlsProperty); }
+			set { SetValue (ImageUrlsProperty, value); }
 		}
-
-		public Image CurrentImage { get; private set; }
+			
+		private int _currentIndex = -1;
+		public Image CurrentImage { get; private set; } = new Image();
+		public Image NextImage { get; private set; } = new Image();
+		public Image PrevImage { get; private set; } = new Image();
 
 		public ImageCarousel ()
 		{
-			Images = new ObservableCollection<Image> ();
+			ImageUrls = new ObservableCollection<string> ();
+			this.Children.Add (CurrentImage);
+			this.Children.Add (NextImage);
+			this.Children.Add (PrevImage);
+		}
+			
+		void ImageUrls_CollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			InitDisplayImages();
 		}
 
-		void Images_CollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+	
+		void InitDisplayImages()
 		{
-			foreach (var item in e.NewItems) {
-				var image = item as Image;
-				if (image != null) {
-					addImageAsChild (image);
-				}
+			if ((ImageUrls.Count > 0) )
+			{
+				LoadImageFromSource(CurrentImage, ImageUrls[0]); 
+				CurrentImage.Layout (new Rectangle (0, 0, this.Width, this.Height));
+				_currentIndex = 0;
+				var nextNumber = _currentIndex == ImageUrls.Count - 1 ? 0 : _currentIndex + 1;
+				var prevNumber = _currentIndex == 0 ? ImageUrls.Count - 1 : _currentIndex - 1;
+				LoadImageFromSource(NextImage, ImageUrls[nextNumber]); 
+				LoadImageFromSource(PrevImage, ImageUrls[prevNumber]); 
+				//ForceLayout ();
 			}
 		}
 
-		void addImagesAsChildren ()
+		private void LoadImageFromSource(Image image, string url)
 		{
-			foreach (var image in Images) {
-				addImageAsChild (image);
-			}
-		}
-
-		void addImageAsChild (Image image)
-		{
-			var point = Point.Zero;
-			this.Children.Add (image, new Rectangle (point, new Size (1, 1)), AbsoluteLayoutFlags.SizeProportional);
-			point = new Point (point.X + image.Width, 0);
+			var imageSource = new UriImageSource () {
+				Uri = new Uri (url)
+			};
+			image.Aspect = Aspect.AspectFill;
+			image.Source = imageSource;
 		}
 
 		protected override void LayoutChildren (double x, double y, double width, double height)
 		{
 			base.LayoutChildren (x, y, width, height);
-
-			//fix layout issues caused by base behavior, make sure these things are in the right place before swiping begins
-			var point = Point.Zero;
-
-			foreach (var image in Images) {
-				image.Layout (new Rectangle (point, image.Bounds.Size));
-				point = new Point (point.X + image.Width + this.Bounds.Width, 0);
-
-			}
+			NextImage.Layout (new Rectangle (this.Width, 0, this.Width, this.Height));
+			CurrentImage.Layout (new Rectangle (0, 0, this.Width, this.Height));
+			PrevImage.Layout (new Rectangle (-this.Width, 0, this.Width, this.Height));
 		}
 
 		protected override void OnPropertyChanged (string propertyName = null)
 		{
 			base.OnPropertyChanged (propertyName);
 
-			//if the Images property has changed, clear our ImageList of images and add all the new images as children
-			if (propertyName == ImagesProperty.PropertyName && Images != null) {
-				Images.CollectionChanged += Images_CollectionChanged;
-				addImagesAsChildren ();
+			if (propertyName == ImageUrlsProperty.PropertyName && ImageUrls != null) {
+				ImageUrls.CollectionChanged += ImageUrls_CollectionChanged;;
+				InitDisplayImages ();
 			}
 		}
+
 
 		protected override void OnChildAdded (Element child)
 		{
 			base.OnChildAdded (child);
-
-			//each time a child Image is added, add it to the ImageList
-			if (child is Image) {
-				//set a CurrentImage if we don't already have one
-				if (CurrentImage == null) {
-					CurrentImage = (Image)child;
-				}
-			}
 		}
 
-		public void OnSwipeLeft ()
+		public async void OnSwipeLeft ()
 		{
-			var imageNumber = Images.IndexOf (CurrentImage);
-			var nextNumber = imageNumber == Images.Count - 1 ? 0 : imageNumber + 1;
-			var nextImage = Images [nextNumber];
-
-			//make sure this image is in position to be animated in
-			nextImage.Layout (new Rectangle (new Point (CurrentImage.Width, 0), CurrentImage.Bounds.Size));
-
-			var current = CurrentImage;
-
-			current.LayoutTo (new Rectangle (-(this.Bounds.Width + this.Width + CurrentImage.Width), 0, CurrentImage.Width, CurrentImage.Height));
-			CurrentImage = nextImage;
-			nextImage.LayoutTo (new Rectangle (0, 0, CurrentImage.Width, CurrentImage.Height));
+			await Task.WhenAll (CurrentImage.LayoutTo (new Rectangle (-this.Width, 0, this.Width, this.Height), 1000),
+								NextImage.LayoutTo (new Rectangle (0, 0, this.Width, this.Height), 1000));
+			LoadNextImage ();
 		}
 
-		public void OnSwipeRight ()
+		private void LoadNextImage()
 		{
-			var imageNumber = Images.IndexOf (CurrentImage);
-			var nextNumber = imageNumber == 0 ? Images.Count - 1 : imageNumber - 1;
-			var nextImage = Images [nextNumber];
+			_currentIndex++;
+			if (_currentIndex == ImageUrls.Count)
+				_currentIndex = 0;
 
-			//make sure this image is in position to be animated in
-			nextImage.Layout (new Rectangle (new Point (-CurrentImage.Width, 0), CurrentImage.Bounds.Size));
+			var nextNumber = _currentIndex + 1;
+			if (nextNumber == ImageUrls.Count)
+				nextNumber = 0;
 
-			var current = CurrentImage;
+			var temp = PrevImage;
+			PrevImage = CurrentImage;
+			CurrentImage = NextImage;
+			NextImage = temp;
 
-			current.LayoutTo (new Rectangle ((this.Bounds.Width + this.Width + CurrentImage.Width), 0, CurrentImage.Width, CurrentImage.Height));
-			CurrentImage = nextImage;
-			nextImage.LayoutTo (new Rectangle (0, 0, CurrentImage.Width, CurrentImage.Height));
+			LoadImageFromSource(NextImage, ImageUrls[nextNumber]);
+			ForceLayout ();
+		}
+
+		public async void OnSwipeRight ()
+		{
+			await Task.WhenAll (CurrentImage.LayoutTo (new Rectangle (this.Width, 0, this.Width, this.Height), 1000),
+				PrevImage.LayoutTo (new Rectangle (0, 0, this.Width, this.Height), 1000));
+			LoadPrevImage ();
 		}
 			
+		private void LoadPrevImage()
+		{
+			_currentIndex--;
+			if (_currentIndex == -1)
+				_currentIndex = ImageUrls.Count - 1;
 
+			var prevIndex = _currentIndex - 1;
+			if (prevIndex == -1)
+				prevIndex = ImageUrls.Count - 1;
+
+			var temp = NextImage;
+			NextImage = CurrentImage;
+			CurrentImage = PrevImage;
+			PrevImage = temp;
+
+			LoadImageFromSource(PrevImage, ImageUrls[prevIndex]);
+			ForceLayout ();
+		}
 	}
 }
 
